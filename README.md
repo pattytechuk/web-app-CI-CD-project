@@ -1,7 +1,7 @@
 # Web App Kubernetes & CI/CD Project on Azure
-This project deploys a containerized web app from Awesome Compose to an Azure Kubernetes Service (AKS) cluster using Bicep, Azure Container Registry, and Azure DevOps CI/CD pipelines
 
-✅ **Project Overview** – What this project does
+✅ **Project Overview** 
+This project deploys a containerized web app from Awesome Compose to an Azure Kubernetes Service (AKS) cluster using Bicep, Azure Container Registry, and Azure DevOps CI/CD pipelines
 
 ✅ **Tech Stack** 
 - 🐳 Docker & Kubernetes
@@ -9,7 +9,7 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 - 🔁 Azure DevOps (CI/CD)
 
 ✅ **Setup Instructions** 
-- Please check out the deployment-guide.md for high-level steps to deploy
+Please check out the deployment-guide.md for high-level steps to deploy
 1. Clone this repo: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
 2. Push Docker images to Azure Container Registry
 3. Deploy AKS with Bicep & Assign Role to AKS Cluster Managed Identity using Azure CLI
