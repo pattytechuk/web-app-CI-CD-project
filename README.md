@@ -4,14 +4,17 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 ✅ **Project Overview** – What this project does
 
 ✅ **Tech Stack** 
-- Docker
-- Azure Kubernetes Service (AKS)
-- Bicep
-- Kubectl
-- Azure DevOps 
+- 🐳 Docker & Kubernetes
+- ☁️ Azure AKS, ACR, Bicep, Azure CLI
+- 🔁 Azure DevOps (CI/CD)
 
 ✅ **Setup Instructions** 
 - Please check out the deployment-guide.md for high-level steps to deploy
+1. Clone this repo: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
+2. Push Docker images to Azure Container Registry
+3. Deploy AKS with Bicep & Assign Role to AKS Cluster Managed Identity using Azure CLI
+4. Deploy web app with Kubernetes manifests
+5. Automate CI/CD pipeline with Azure DevOps
 
 ✅ **Folder Structure** 
 📁 web-app-CI-CD-project
