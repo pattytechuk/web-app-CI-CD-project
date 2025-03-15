@@ -13,14 +13,14 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 ✅ **Setup Instructions** 
 - Please check out the deployment-guide.md for high-level steps to deploy
 
-✅ **Folder Structure** – Explain key folders & files
+✅ **Folder Structure** 
 📁 web-app-CI-CD-project
- ├── 📁 bicep/                # Bicep templates for AKS & ACR
- ├── 📁 k8s-manifests/        # Kubernetes YAML files for deployment & service
- ├── 📁 ci-cd/                # Azure DevOps pipeline YAML
- ├── 📁 docs/                 # Screenshots, notes, architecture diagrams
- ├── README.md                # Overview of project
- ├── deployment-guide.md       # Step-by-step guide
- ├── .gitignore                # Ignore unnecessary files
+- 📁 bicep/                # Bicep templates for AKS & ACR
+- 📁 k8s-manifests/        # Kubernetes YAML files for deployment & service
+- 📁 ci-cd/                # Azure DevOps pipeline YAML
+- 📁 docs/                 # Screenshots, notes, architecture diagrams
+- README.md                # Overview of project
+- deployment-guide.md       # Step-by-step guide
+- .gitignore                # Ignore unnecessary files
 
 ✅ **Screenshots** 
