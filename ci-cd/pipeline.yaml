@@ -1,0 +1,45 @@
+trigger:
+  branches:
+    include:
+      - main  # Adjust this to your branch name if it's not 'main'
+
+pool:
+  vmImage: 'ubuntu-latest'  # You can change this to a different image if necessary
+
+variables:
+  ACR_NAME: 'webappcr1'  # Your ACR name
+  ACR_REPO_FRONTEND: 'mywebapp-frontend'
+  ACR_REPO_BACKEND: 'mywebapp-backend'
+  ACR_REPO_MONGO: 'mywebapp-mongo'
+  RESOURCE_GROUP: 'webapp1'  # Your Azure resource group
+  AKS_CLUSTER: 'myAKSCluster'  # Your AKS cluster name
+
+steps:
+  # Step 1: Checkout Kubernetes manifest repo
+  - checkout: self  # Ensure correct indentation here
+
+  # Step 2: Login to Azure CLI
+  - task: AzureCLI@2
+    displayName: 'Login to Azure'
+    inputs:
+      azureSubscription: 'AzureSubscriptionConnection'  # Use your service connection name
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az aks get-credentials --resource-group $(RESOURCE_GROUP) --name $(AKS_CLUSTER)
+
+  # Step 3: Pull images from ACR and deploy to AKS
+  - task: AzureCLI@2
+    displayName: 'Deploy to AKS using images from ACR'
+    inputs:
+      azureSubscription: 'AzureSubscriptionConnection'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        # Pull images from ACR
+        kubectl set image deployment/frontend-deployment frontend=$(ACR_NAME).azurecr.io/$(ACR_REPO_FRONTEND):latest
+        kubectl set image deployment/backend-deployment backend=$(ACR_NAME).azurecr.io/$(ACR_REPO_BACKEND):latest
+        kubectl set image deployment/mongo-deployment mongo=$(ACR_NAME).azurecr.io/$(ACR_REPO_MONGO):4.2.0
+
+        # Apply Kubernetes services
+        kubectl apply -f $(Build.SourcesDirectory)/deployment2.yaml  # Adjust path if necessary
