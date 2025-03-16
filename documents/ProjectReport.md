@@ -160,71 +160,73 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Wrote deployment YAML file to define and manage how app should be deployed and run on the AKS cluster. 
 
     Authenticated into Azure and set up kubeCTL context:  
-    `az aks get-credentials --resource-group webapp1 --name myAKScluster`  
-
-    [screenshot15]  
-    Above: Output from command setting current kubeCTL context.  
+    `az aks get-credentials --resource-group webapp1 --name myAKScluster`
+    
+    ![screenshot15 setting kubectl context](https://github.com/user-attachments/assets/d220b1f5-6cb5-4117-8990-e5a90b83805a)  
+    Above: Output from command setting current kubeCTL context. 
 
     Applied manifest with following command:  
     `kubectl apply -f deployment2.yaml`  
 
-    [screenshot16]  
-    Above: Output from apploying deployment yaml file. 
+    ![screenshot16 output deployment yaml file](https://github.com/user-attachments/assets/0a87540a-0124-4801-b882-decbcf0d83fd)  
+    Above: Output from apploying deployment yaml file.  
 
-    [screenshot17]  
+    ![screenshot17 output cluster services](https://github.com/user-attachments/assets/119f2e32-e282-4e4e-847b-28436f0bde31)  
     Above: Output showing all cluster services. 
 
-    [screenshot18]  
-    Above: Output showing all AKS pods.
+    ![screenshot18 output showing aks pods](https://github.com/user-attachments/assets/b26de100-94b8-48f1-baa0-d13c262bbc29)  
+    Above: Output showing all AKS pods.  
 
     Verified web application functionality:  
-    [screenshot19]  
+    ![screenshot19](https://github.com/user-attachments/assets/4ee24904-c660-43a5-89d1-5337e6c73646)  
     Above: Verified web application functionality on front end using public IP address.  
 
-8.  Deploying CI/CD Pipeline in Azure DevOps  
+9.  Deploying CI/CD Pipeline in Azure DevOps  
 
     Now that we have the application set up manually, we will now set up a pipeline to handle future automated deployments. 
 
     After setting up Azure DevOps Account, I create a new project.
-    [screenshot20]  
+
+    ![screenshot20 created project azuredevops](https://github.com/user-attachments/assets/2ef9dd5b-8962-4d7a-8ec7-f18d9f37d3a7)  
     Above: Created Azure DevOps project. The only files placed into the repo of this project was the deployment YAML. 
 
     I then created a new pipeline and wrote a yaml file for the pipeline.
-    [screenshot21]  
-    [screenshot22]
+    ![screenshot21 pipeline](https://github.com/user-attachments/assets/34a5ffaa-ffed-401a-b5bb-d54229dbf255)  
+    ![screenshot22 pipeline yaml](https://github.com/user-attachments/assets/d6c81d91-6f62-412d-be11-4a5ec7c34fd9)  
     Above: Configuration of pipeline and YAML. The YAML file dictates that instead of deploying web app code from the repo, to instead pull images from our container registry. Please refer to 'pipeline.yaml' file under the 'ci-cd' folder to view the full file.
 
-    [screenshot28]  
+     ![screenshot28 yaml](https://github.com/user-attachments/assets/26a4582c-c2d6-4a67-a6f2-2c6a4b821ba8)  
     Above: Project folder showing deployment YAML file; the pipeline pulled container images of the web application separately.  
 
     Set up Service Connection:
-    [screenshot23]  
+    ![screenshot23 service connection](https://github.com/user-attachments/assets/61f086a1-e033-45cb-9f9a-55ec064c4480)  
     Above: Set up of Azure service connection to connect pipeline to AKS resources in webapp1 (resource group where web app is).  
 
     Verified that the correct permissions were given to pipeline as 'Contributor':  
-    [screenshot24]  
+    ![screenshot24 service prinaipal for pipeline](https://github.com/user-attachments/assets/d7bf0f58-82cf-47c7-a6c6-70d1df33efa1)  
     Above: Service principal under 'webapp1' with Contributor role.  
 
     Ran pipeline:  
-    [screenshot25]  
+     ![screenshot25 pipeline run details](https://github.com/user-attachments/assets/19f1fa47-b38e-47db-83c5-711a048c06d4)  
     Above: Summary of details from first run of the pipeline; status shows as successful.  
 
     Ran command to check pods are running successfully:  
     `kubectl get pods`
-    [screenshot26]  
+    
+      ![screenshot26 pods running](https://github.com/user-attachments/assets/85a84f53-4441-41b5-ab86-9d0f93b5d573)  
     Above: kubectl get pods ran showing pods running. The pipeline for deploying container images to Azure Kubernetes Service (AKS) has been successfully set up. While the image tags weren't updated during this deployment, the pipeline would typically push the latest container images to AKS automatically.  
 
-    [screenshot27]  
+    ![screenshot27 deployment logs from pipeline](https://github.com/user-attachments/assets/c65e722d-67d6-4510-9f07-f62535565eea)  
     Above: Pipeline deployment logs showing container images being pulled.  
 
-9.  Created a new repository on GitHub named web-app-CI-CD-project.  
+11.  Created a new repository on GitHub named web-app-CI-CD-project.  
 
     Cloned the repository locally using:  
 
     `git clone https://github.com/pattytechuk/web-app-CI-CD-project.git`  
 
 
-10. Initialized the Project  
+11. Initialized the Project  
 
     Created folders: bicep/, ci-cd/, documents/, images/ and k8s-manifests/.  
 
