@@ -9,7 +9,7 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 - 🔁 Azure DevOps (CI/CD)
 
 ## ✅ **Setup Instructions** 
-Please check out the projectreport.md for full details on steps taken on this project.
+Please check out the projectreport.md for full details on steps taken on this project, including commands run, resources provisioned, and tools used.
 
 High level overview of steps taken:
 1. Cloned this repo: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
