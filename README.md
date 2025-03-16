@@ -11,8 +11,24 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 ## ✅ **Setup Instructions** 
 Please check out the projectreport.md for full details on steps taken on this project, including commands run, resources provisioned, and tools used.
 
+Main commands include:  
+`docker-compose up -d`  
+`docker tag react-express-mongodb-frontend webappcr1.azurecr.io/mywebapp-frontend:latest`  
+`docker tag react-express-mongodb-backend webappcr1.azurecr.io/mywebapp-backend:latest`  
+`docker tag mongo webappcr1.azurecr.io/webapp-mongo:4.2.0`  
+`az group create --name webapp1 --location UKSouth`  
+`az acr create --resource-group webapp1 --name webappcr1 --sku Basic`  
+`az acr repository list --name webappcr1 --output table`  
+`az aks get-credentials --resource-group myResourceGroup --name myAKSCluster`
+`az aks update -n myAKSCluster -g webapp1 --attach-acr webappcr1`  
+`az role assignment list --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --scope /subscriptions/[subscriptionid]/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1
+az aks get-credentials --resource-group webapp1 --name myAKScluster`   
+`kubectl apply -f deployment2.yaml`  
+`kubectl get services`  
+`kubectl get pods`     
+
 High level overview of steps taken:
-1. Cloned this repo: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
+1. Cloned this repo from Awesome Compose, which provides collections of Docker compose examples: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb 
 2. Pushed Docker images to Azure Container Registry
 3. Deployed AKS with Bicep & Assign Role to AKS Cluster Managed Identity using Azure CLI
 4. Deployed web app with Kubernetes manifests
