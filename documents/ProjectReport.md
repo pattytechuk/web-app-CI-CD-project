@@ -46,33 +46,33 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
 ## Steps Taken
 
-1. Cloned Repository with Web App
+1. Cloned Repository with Web App  
 
     Cloned the repository locally using: 
 
-    git clone https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
+    `git clone https://github.com/docker/awesome-compose/tree/master/react-express-mongodb`  
 
 2. Ran Web App Locally
 
-    Opened the integrated terminal in Visual Studio Code
+    Opened the integrated terminal in Visual Studio Code  
 
-    Navigated to the project directory using:
-    `cd awesome-compose/react-express-mongoDB`
+    Navigated to the project directory using:  
+    `cd awesome-compose/react-express-mongoDB`  
 
-    Authenticated into my Docker account:
-    `docker login`
+    Authenticated into my Docker account:  
+    `docker login`  
 
-    Ran the Docker command to start the multi-container app:
-    `docker-compose up -d`
+    Ran the Docker command to start the multi-container app:  
+    `docker-compose up -d`  
 
-    After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
-    [screenshot1]
+    After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:  
+    [screenshot1]  
 
-    Read through Dockerfile included in the app.
+    Read through Dockerfile included in the app.  
 
-3.  Created resources for the project using Azure CLI
+3.  Created resources for the project using Azure CLI  
 
-    Logged into Azure account:
+    Logged into Azure account:  
     `az login`
 
     Created resource group for the web app and AKS cluster:  
@@ -81,7 +81,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Created Azure Container Registry (ACR):     
     `az acr create --resource-group webapp1 --name webappcr1 --sku Basic`  
 
-    [screenshot2]
+    [screenshot2]  
     [screenshot3]
 
 4.  Tagging and creating container images to push to ACR
@@ -89,43 +89,43 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Logged into ACR:  
     `az acr login --name webappcr1`  
 
-    Since the web app has a front end, back end, and mongo, I tagged all 3 images for ACR:
+    Since the web app has a front end, back end, and mongo, I tagged all 3 images for ACR:  
     `docker tag react-express-mongodb-frontend webappcr1.azurecr.io/mywebapp-frontend:latest`  
 
     `docker tag react-express-mongodb-backend webappcr1.azurecr.io/mywebapp-backend:latest`  
 
     `docker tag mongo webappcr1.azurecr.io/webapp-mongo:4.2.0`  
 
-10. Creating the GitHub Repository
+10. Creating the GitHub Repository  
 
-    Created a new repository on GitHub named web-app-CI-CD-project.
+    Created a new repository on GitHub named web-app-CI-CD-project.  
 
-    Cloned the repository locally using:
+    Cloned the repository locally using:  
 
-    `git clone https://github.com/pattytechuk/web-app-CI-CD-project.git`
-
-
-11. Initializing the Project
-
-    Created folders: bicep/, ci-cd/, documents/, images/ and k8s-manifests/.
-
-    Initialized a Git repository:
-    `git init`
-
-    Set remote origin:
-    `git remote add origin https://github.com/pattytechuk/web-app-CI-CD-project.git`
+    `git clone https://github.com/pattytechuk/web-app-CI-CD-project.git`  
 
 
-12. Pushing to GitHub
+11. Initializing the Project  
 
-    Staged all files and committed changes:
+    Created folders: bicep/, ci-cd/, documents/, images/ and k8s-manifests/.  
 
-    `git add .`
-    `git commit -m "Initial project structure setup"`
+    Initialized a Git repository:  
+    `git init`  
 
-    Pushed to GitHub:
-    `git push -u origin main`
+    Set remote origin:  
+    `git remote add origin https://github.com/pattytechuk/web-app-CI-CD-project.git`  
 
-## Reflection
 
-(Discuss challenges faced, what you learned, and areas to improve.)
+12. Pushing to GitHub  
+
+    Staged all files and committed changes:  
+
+    `git add .`  
+    `git commit -m "Initial project structure setup"`  
+
+    Pushed to GitHub:  
+    `git push -u origin main`  
+
+## Reflection  
+
+(Discuss challenges faced, what you learned, and areas to improve.)  
