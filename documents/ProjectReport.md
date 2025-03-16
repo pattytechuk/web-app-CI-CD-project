@@ -1,10 +1,11 @@
 Project Report: Deploying a Containerized Web Application with Azure DevOps CI/CD Pipeline and Kubernetes
 
-Overview
+## Overview
 
 This project demonstrates my ability to set up a complete CI/CD pipeline for a web application using various tools and technologies. The purpose is to develop skills in cloud infrastructure deployment, automation/scripting, and Kubernetes management.
 
 ## Project Structure
+The following is the folder structure for this project. 
 ```
 web-app-CI-CD-project/
 │
@@ -29,18 +30,18 @@ Kubernetes: Deployment and management of containerized applications.
 
 ## Planning and Preparation
 
-Goal Setting and Requirements: My goal was to containerize a web application and automate its deployment using Azure Kubernetes Services (AKS). For the first part of the project, I manually set up the infrastructure using Bicep, set up an AKS cluster, deploy the web app into the cluster, and then verify the web application's functionality. 
+**Goal Setting and Requirements:** My goal was to containerize a web application and automate its deployment using Azure Kubernetes Services (AKS). For the first part of the project, I manually set up the infrastructure using Bicep, set up an AKS cluster, deploy the web app into the cluster, and then verify the web application's functionality. 
 
 For the second part of the project, I set up a pipeline in Azure DevOps' pipelines in order to automate the deployment of the infrastructure, AKS cluster, and the deployment of the web application. 
 
-Set Up Development Environment: The following are the tools and resources I set up at the beginning:
+**Set Up Development Environment:** The following are the tools and resources I set up at the beginning:
 - Installed Git.
 - Installed Docker.
 - Installed extensions for Visual Studio Code including Azure CLI Tools, Azure Tools, Bicep for VS Code, Docker for VS Code, and YAML.
-- Set up Azure DevOps account and created a project.
+- Set up Azure DevOps account and created a project; also created pipeline.
 - Set up Azure CLI for Azure interaction.
 
-Application Details: I chose a sample web app using Express/Node Js available for use on on Awesome Compose's Github repo: https://github.com/docker/awesome-compose/tree/master
+**Application Details:** I chose a sample web app using Express/Node Js available for use on on Awesome Compose's Github repo: https://github.com/docker/awesome-compose/tree/master
 
 
 ## Steps Taken
@@ -69,38 +70,54 @@ Application Details: I chose a sample web app using Express/Node Js available fo
 
     Read through Dockerfile included in the app.
 
+3.  Created resources for the project using Azure CLI
+
+    Logged into Azure account:
+    `az login`
+
+    Created resource group for the web app and AKS cluster:
+    `az group create --name webapp1 --location UKSouth`
+
+    Created Azure Container Registry (ACR): 
+    `az acr create --resource-group webapp1 --name webappcr1 --sku Basic`
+
+    [screenshot2 - resource group]
+    [screenshot3 - container registry]
+
+4.  Tagging and creating container images to push to ACR
+
+    
+   
+
 10. Creating the GitHub Repository
 
     Created a new repository on GitHub named web-app-CI-CD-project.
 
     Cloned the repository locally using:
 
-    git clone https://github.com/pattytechuk/web-app-CI-CD-project.git
+    `git clone https://github.com/pattytechuk/web-app-CI-CD-project.git`
 
 
 11. Initializing the Project
 
-Created folders: bicep/, ci-cd/, documents/, and k8s-manifests/.
+    Created folders: bicep/, ci-cd/, documents/, images/ and k8s-manifests/.
 
-Initialized a Git repository:
+    Initialized a Git repository:
+    `git init`
 
-git init
-
-Set remote origin:
-
-git remote add origin https://github.com/pattytechuk/web-app-CI-CD-project.git
+    Set remote origin:
+    `git remote add origin https://github.com/pattytechuk/web-app-CI-CD-project.git`
 
 
 12. Pushing to GitHub
 
-Staged all files and committed changes:
+    Staged all files and committed changes:
 
-git add .
-git commit -m "Initial project structure setup"
+    `git add .`
+    `git commit -m "Initial project structure setup"`
 
-Pushed to GitHub:
-
-git push -u origin main
+    Pushed to GitHub:
+    `git push -u origin main`
 
 ## Reflection
 
