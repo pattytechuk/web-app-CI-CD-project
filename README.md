@@ -17,23 +17,14 @@ Please check out the deployment-guide.md for high-level steps to deploy
 5. Automate CI/CD pipeline with Azure DevOps
 
 ✅ **Folder Structure** 
-📁 web-app-CI-CD-project
-- 📁 bicep/                # Bicep templates for AKS & ACR
-- 📁 k8s-manifests/        # Kubernetes YAML files for deployment & service
-- 📁 ci-cd/                # Azure DevOps pipeline YAML
-- 📁 docs/                 # Screenshots, notes, architecture diagrams
-- README.md                # Overview of project
-- deployment-guide.md       # Step-by-step guide
-- .gitignore                # Ignore unnecessary files
-
 ```
-web-app-CI-CD-project/
+📁 web-app-CI-CD-project
 │
-├── bicep/              # Bicep templates for infrastructure as code (IaC)
-├── ci-cd/              # CI/CD pipeline configurations (YAML files, scripts, etc.)
-├── documents/          # Documentation files 
-├── k8s-manifests/      # Kubernetes manifests for deploying the application
-├── images/             # Screenshots, images, diagrams
+├── 📁bicep/              # Bicep templates for infrastructure as code (IaC)
+├── 📁ci-cd/              # CI/CD pipeline configurations (YAML files, scripts, etc.)
+├── 📁documents/          # Documentation files 
+├── 📁k8s-manifests/      # Kubernetes manifests for deploying the application
+├── 📁images/             # Screenshots, images, diagrams
 - README.md             # Overview of project
 - .gitignore            # Ignore unnecessary files
 ```
