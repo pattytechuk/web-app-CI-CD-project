@@ -118,7 +118,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     `az deployment group create --resource-group webapp1 --template-file main2.bicep`  
     (Please refer to folder 'bicep' to see the template deployed.)  
 
-    ![screenshot 6 bicep file output](https://github.com/user-attachments/assets/d2d88814-8685-4951-9f09-f6f50206cda1)  
+    ![screenshot 6 bicep deployed](https://github.com/user-attachments/assets/74ab5337-6240-4457-84c0-269719a7a3a0)  
     Above: Output showing successful deployment of Bicep file.
     
     ![screenshot7](https://github.com/user-attachments/assets/6f9be9fc-06c2-4184-a8e3-287b791bec4c)  
@@ -133,7 +133,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     ![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/c30b277e-64cf-44eb-9c7e-82d113bf1979)  
     Above: Newly created AKS cluster's node pools in the Azure portal.  
 
-6.  Configuring AKS Cluster to Pull Images from ACR  
+7.  Configuring AKS Cluster to Pull Images from ACR  
 
     Used the following command to grant AKS cluster permission to pull images from ACR (webappcr1):  
     `az aks update -n myAKSCluster -g webapp1 --attach-acr webappcr1`  
@@ -155,7 +155,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Managed identity under the IAM blade of the container registry:  
     ![screenshot14 container registry new roles](https://github.com/user-attachments/assets/a849c01c-a082-4e57-a1fe-dffa762c7248)  
 
-7.  Deploying Web App to AKS with Kubernetes Manifest  
+8.  Deploying Web App to AKS with Kubernetes Manifest  
 
     Wrote deployment YAML file to define and manage how app should be deployed and run on the AKS cluster. 
 
@@ -216,7 +216,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
       ![screenshot26 pods running](https://github.com/user-attachments/assets/85a84f53-4441-41b5-ab86-9d0f93b5d573)  
     Above: kubectl get pods ran showing pods running. The pipeline for deploying container images to Azure Kubernetes Service (AKS) has been successfully set up. While the image tags weren't updated during this deployment, the pipeline would typically push the latest container images to AKS automatically.  
 
-    ![screenshot27 deployment logs from pipeline](https://github.com/user-attachments/assets/c65e722d-67d6-4510-9f07-f62535565eea)  
+       ![screenshot27 deployment logs from pipeline](https://github.com/user-attachments/assets/bbb0b1ea-702b-4d74-acf0-c1e1994dca05)  
     Above: Pipeline deployment logs showing container images being pulled.  
 
 11.  Created a new repository on GitHub named web-app-CI-CD-project.  
