@@ -33,8 +33,14 @@ web-app-CI-CD-project/
 ├── ci-cd/              # CI/CD pipeline configurations (YAML files, scripts, etc.)
 ├── documents/          # Documentation files 
 ├── k8s-manifests/      # Kubernetes manifests for deploying the application
+├── images/             # Screenshots, images, diagrams
 - README.md             # Overview of project
 - .gitignore            # Ignore unnecessary files
 ```
 
 ✅ **Screenshots** 
+Please check out more screenshots under folder 'images' in this repo. 
+```
+├── images/             # Screenshots, images, diagrams
+```
+
