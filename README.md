@@ -47,7 +47,7 @@ Above: AKS cluster running nodes/pods with the web application.
 ![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/f574d202-a4f6-4726-b69a-abc1774a3efd)  
 Above: AKS nodes running; systempool contains 1 VM and agentpool contains 2 VMs.  
 
-![screenshot26 pods running](https://github.com/user-attachments/assets/dbeecfa9-435b-46c3-9670-a58524c60829)
+![screenshot26 pods running](https://github.com/user-attachments/assets/dbeecfa9-435b-46c3-9670-a58524c60829)  
 Above: Command confirming pods are running as expected.
 
 
