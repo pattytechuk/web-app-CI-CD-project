@@ -140,6 +140,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
     Ran command to assign 'AcrPull' role to the AKS' managed identity:  
     `az role assignment create --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --role AcrPull --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
+    
      ![screenshot12 role assignment output](https://github.com/user-attachments/assets/47829d83-ff9c-4328-bbfb-fe3f9c80f86b)  
     Above: Output from command re: role assignment.  
 
