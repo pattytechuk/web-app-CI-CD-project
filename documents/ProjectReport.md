@@ -64,12 +64,11 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
     Ran the Docker command to start the multi-container app:  
     `docker-compose up -d`  
-    [screenshot0]  
-    Above: Docker command output.  
+    ![docker compose d command](https://github.com/user-attachments/assets/4b886f3f-a3e0-4ec7-ac09-f3a45a37989e)  
+    Above: Docker command output; runs the services defined in your docker-compose.yml 
 
     After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:  
-    ![screenshot1](https://github.com/user-attachments/assets/90e5e9f6-5927-4682-8f2d-bb295c8dc515)
-
+    ![screenshot1](https://github.com/user-attachments/assets/90e5e9f6-5927-4682-8f2d-bb295c8dc515)  
     Above: Verifying local web application setup; running on localhost: 3000. 
 
     Read through Dockerfile included in the app.  
@@ -141,13 +140,13 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Above: Output from command, attaching ACR to AKS cluster.  
 
     Ran command to assign 'AcrPull' role to the AKS' managed identity:  
-    `az role assignment create --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --role AcrPull --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
+    `az role assignment create --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --role AcrPull --scope /subscriptions/[subscriptionid]/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
     
     ![screenshot12 role assignment output](https://github.com/user-attachments/assets/0de9950b-60b4-4398-a8b2-65b3648f4585)  
     Above: Output from command re: role assignment.  
 
     Ran command to verify role assignment was successful:  
-    `az role assignment list --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
+    `az role assignment list --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --scope /subscriptions/[subscriptionid]/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
 
     ![screenshot13 role assignment list output](https://github.com/user-attachments/assets/4f4a2cd9-fe67-4c33-b82f-5053b77212c0)  
     Above: Output confirming role assignment. 
