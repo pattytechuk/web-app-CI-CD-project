@@ -34,7 +34,7 @@ Goal Setting and Requirements: My goal was to containerize a web application and
 For the second part of the project, I set up a pipeline in Azure DevOps' pipelines in order to automate the deployment of the infrastructure, AKS cluster, and the deployment of the web application. 
 
 Set Up Development Environment: The following are the tools and resources I set up at the beginning:
-
+- Installed Git.
 - Installed Docker.
 - Installed extensions for Visual Studio Code including Azure CLI Tools, Azure Tools, Bicep for VS Code, Docker for VS Code, and YAML.
 - Set up Azure DevOps account and created a project.
@@ -43,9 +43,33 @@ Set Up Development Environment: The following are the tools and resources I set 
 Application Details: I chose a sample web app using Express/Node Js available for use on on Awesome Compose's Github repo: https://github.com/docker/awesome-compose/tree/master
 
 
-Steps Taken
+## Steps Taken
 
-1. Creating the GitHub Repository
+1. Cloned Repository with Web App
+
+Cloned the repository locally using: 
+
+git clone https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
+
+2. Ran Web App Locally
+
+Opened the integrated terminal in Visual Studio Code
+
+Navigated to the project directory using:
+cd awesome-compose/react-express-mongoDB 
+
+Authenticated into my Docker account:
+docker login
+
+Ran the Docker command to start the multi-container app:
+docker-compose up -d
+
+After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
+[screenshot1]
+
+Read through Dockerfile included in the app.
+
+10. Creating the GitHub Repository
 
 Created a new repository on GitHub named web-app-CI-CD-project.
 
@@ -54,7 +78,7 @@ Cloned the repository locally using:
 git clone https://github.com/pattytechuk/web-app-CI-CD-project.git
 
 
-2. Initializing the Project
+11. Initializing the Project
 
 Created folders: bicep/, ci-cd/, documents/, and k8s-manifests/.
 
@@ -67,7 +91,7 @@ Set remote origin:
 git remote add origin https://github.com/pattytechuk/web-app-CI-CD-project.git
 
 
-3. Pushing to GitHub
+12. Pushing to GitHub
 
 Staged all files and committed changes:
 
@@ -78,12 +102,6 @@ Pushed to GitHub:
 
 git push -u origin main
 
-Next Steps
-
-Continue documenting steps for Bicep, CI/CD configuration, and Kubernetes deployment.
-
-Include screenshots from images/ folder as needed.
-
-Reflection
+## Reflection
 
 (Discuss challenges faced, what you learned, and areas to improve.)
