@@ -56,13 +56,13 @@ Application Details: I chose a sample web app using Express/Node Js available fo
     Opened the integrated terminal in Visual Studio Code
 
     Navigated to the project directory using:
-    cd awesome-compose/react-express-mongoDB 
+    `cd awesome-compose/react-express-mongoDB`
 
     Authenticated into my Docker account:
-    docker login
+    `docker login`
 
     Ran the Docker command to start the multi-container app:
-    docker-compose up -d
+    `docker-compose up -d`
 
     After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
     [screenshot1]
