@@ -75,19 +75,26 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Logged into Azure account:
     `az login`
 
-    Created resource group for the web app and AKS cluster:
-    `az group create --name webapp1 --location UKSouth`
+    Created resource group for the web app and AKS cluster:  
+    `az group create --name webapp1 --location UKSouth`  
 
-    Created Azure Container Registry (ACR): 
-    `az acr create --resource-group webapp1 --name webappcr1 --sku Basic`
+    Created Azure Container Registry (ACR):     
+    `az acr create --resource-group webapp1 --name webappcr1 --sku Basic`  
 
-    [screenshot2 - resource group]
-    [screenshot3 - container registry]
+    [screenshot2]
+    [screenshot3]
 
 4.  Tagging and creating container images to push to ACR
 
-    
-   
+    Logged into ACR:  
+    `az acr login --name webappcr1`  
+
+    Since the web app has a front end, back end, and mongo, I tagged all 3 images for ACR:
+    `docker tag react-express-mongodb-frontend webappcr1.azurecr.io/mywebapp-frontend:latest`  
+
+    `docker tag react-express-mongodb-backend webappcr1.azurecr.io/mywebapp-backend:latest`  
+
+    `docker tag mongo webappcr1.azurecr.io/webapp-mongo:4.2.0`  
 
 10. Creating the GitHub Repository
 
