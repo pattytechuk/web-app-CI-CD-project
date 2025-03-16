@@ -47,35 +47,35 @@ Application Details: I chose a sample web app using Express/Node Js available fo
 
 1. Cloned Repository with Web App
 
-Cloned the repository locally using: 
+    Cloned the repository locally using: 
 
-git clone https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
+    git clone https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
 
 2. Ran Web App Locally
 
-- Opened the integrated terminal in Visual Studio Code
+    Opened the integrated terminal in Visual Studio Code
 
-- Navigated to the project directory using:
-cd awesome-compose/react-express-mongoDB 
+    Navigated to the project directory using:
+    cd awesome-compose/react-express-mongoDB 
 
-- Authenticated into my Docker account:
-docker login
+    Authenticated into my Docker account:
+    docker login
 
-- Ran the Docker command to start the multi-container app:
-docker-compose up -d
+    Ran the Docker command to start the multi-container app:
+    docker-compose up -d
 
-- After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
-[screenshot1]
+    After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
+    [screenshot1]
 
-- Read through Dockerfile included in the app.
+    Read through Dockerfile included in the app.
 
 10. Creating the GitHub Repository
 
-Created a new repository on GitHub named web-app-CI-CD-project.
+    Created a new repository on GitHub named web-app-CI-CD-project.
 
-Cloned the repository locally using:
+    Cloned the repository locally using:
 
-git clone https://github.com/pattytechuk/web-app-CI-CD-project.git
+    git clone https://github.com/pattytechuk/web-app-CI-CD-project.git
 
 
 11. Initializing the Project
