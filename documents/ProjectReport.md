@@ -67,6 +67,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
     After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:  
     [screenshot1]  
+    Above: Verifying local web application setup; running on localhost: 3000. 
 
     Read through Dockerfile included in the app.  
 
@@ -110,9 +111,37 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Created main2.bicep to define Azure Kubernetes Services (including cluster), Azure Container Registry, and Virtual Network:  
     `az deployment group create --resource-group webapp1 --template-file main2.bicep`  
     (Please refer to folder 'bicep' to see the template deployed.)  
+
     [screenshot6]  
+    Above: Output showing successful deployment of Bicep file.  
     [screenshot7]  
-    [screenshot8]
+    Above: Resource group (webapp1) with newly deployed AKS cluster (myAKScluster), virtual network (Vnet1), and container registry (webappcr1).  
+    [screenshot8]  
+    Above: Automatically created resource group 'MC_webapp1_myAKSCluster_uksouth'.  
+    [screenshot9]  
+    Above: Newly created AKS cluster (myAKSCluster) in the Azure portal.  
+    [screenshot10]  
+    Above: Newly created AKS cluster's node pools in the Azure portal.  
+
+6.  Configuring AKS Cluster to Pull Images from ACR  
+
+    Used the following command to grant AKS cluster permission to pull images from ACR (webappcr1):  
+    `az aks update -n myAKSCluster -g webapp1 --attach-acr webappcr1`  
+    [screenshot11]  
+    Above: Output from command, attaching ACR to AKS cluster.  
+
+    Ran command to assign 'AcrPull' role to the AKS' managed identity:  
+    `az role assignment create --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --role AcrPull --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
+    [screenshot12]  
+    Above: Output from command re: role assignment.  
+
+    Ran command to verify role assignment was successful:  
+    `az role assignment list --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
+    [screenshot13]  
+    Above: Output confirming role assignment. 
+
+    Managed identity under the IAM blade of the container registry:  
+    [screenshot14]
 
 10. Creating the GitHub Repository  
 
