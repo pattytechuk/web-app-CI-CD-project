@@ -64,6 +64,8 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
     Ran the Docker command to start the multi-container app:  
     `docker-compose up -d`  
+    [screenshot0]  
+    Above: Docker command output.  
 
     After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:  
     ![screenshot1](https://github.com/user-attachments/assets/90e5e9f6-5927-4682-8f2d-bb295c8dc515)
@@ -89,7 +91,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     ![screenshot3 webappcr1](https://github.com/user-attachments/assets/85b9f3d3-c1d7-4904-8347-d1046776eb56)
     Above: Azure Container Registry 'webappcr1' in the Azure portal.  
 
-5.  Tagging and creating container images to push to ACR
+4.  Tagging and creating container images to push to ACR
 
     Logged into ACR:  
     `az acr login --name webappcr1`  
@@ -110,7 +112,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     ![screenshot5](https://github.com/user-attachments/assets/80ebccdd-7e1e-4bd6-86cd-8dcac1441172)  
     Above: Container registry images in the Azure portal.  
 
-7.  Deployed Bicep template with Infrastructure  
+5.  Deployed Bicep template with Infrastructure  
 
     Created main2.bicep to define Azure Kubernetes Services (including cluster), Azure Container Registry, and Virtual Network:  
     `az deployment group create --resource-group webapp1 --template-file main2.bicep`  
@@ -122,16 +124,16 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     ![screenshot7](https://github.com/user-attachments/assets/6f9be9fc-06c2-4184-a8e3-287b791bec4c)  
     Above: Resource group (webapp1) with newly deployed AKS cluster (myAKScluster), virtual network (Vnet1), and container registry (webappcr1).  
     
-     ![screenshot8 second rg](https://github.com/user-attachments/assets/f3c896b9-4c8c-4513-a5af-438dd09bde60)  
-    Above: Automatically created resource group 'MC_webapp1_myAKSCluster_uksouth'.
+    ![screenshot8 second rg](https://github.com/user-attachments/assets/f3c896b9-4c8c-4513-a5af-438dd09bde60)  
+    Above: Automatically created resource group 'MC_webapp1_myAKSCluster_uksouth'.  
     
-      ![screenshot9 aks cluster](https://github.com/user-attachments/assets/cf6a8ad1-ba09-46c6-a58b-e889f3eb5233)  
-    Above: Newly created AKS cluster (myAKSCluster) in the Azure portal.
+    ![screenshot9 aks cluster](https://github.com/user-attachments/assets/cf6a8ad1-ba09-46c6-a58b-e889f3eb5233)  
+    Above: Newly created AKS cluster (myAKSCluster) in the Azure portal.  
 
-   ![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/c30b277e-64cf-44eb-9c7e-82d113bf1979)  
+    ![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/c30b277e-64cf-44eb-9c7e-82d113bf1979)  
     Above: Newly created AKS cluster's node pools in the Azure portal.  
 
-9.  Configuring AKS Cluster to Pull Images from ACR  
+6.  Configuring AKS Cluster to Pull Images from ACR  
 
     Used the following command to grant AKS cluster permission to pull images from ACR (webappcr1):  
     `az aks update -n myAKSCluster -g webapp1 --attach-acr webappcr1`  
@@ -141,28 +143,88 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Ran command to assign 'AcrPull' role to the AKS' managed identity:  
     `az role assignment create --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --role AcrPull --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
     
-      ![screenshot12 role assignment output](https://github.com/user-attachments/assets/0de9950b-60b4-4398-a8b2-65b3648f4585)  
+    ![screenshot12 role assignment output](https://github.com/user-attachments/assets/0de9950b-60b4-4398-a8b2-65b3648f4585)  
     Above: Output from command re: role assignment.  
 
     Ran command to verify role assignment was successful:  
     `az role assignment list --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
 
-     ![screenshot13 role assignment list output](https://github.com/user-attachments/assets/4f4a2cd9-fe67-4c33-b82f-5053b77212c0)  
+    ![screenshot13 role assignment list output](https://github.com/user-attachments/assets/4f4a2cd9-fe67-4c33-b82f-5053b77212c0)  
     Above: Output confirming role assignment. 
 
     Managed identity under the IAM blade of the container registry:  
     ![screenshot14 container registry new roles](https://github.com/user-attachments/assets/a849c01c-a082-4e57-a1fe-dffa762c7248)  
 
-11. Creating the GitHub Repository  
+7.  Deploying Web App to AKS with Kubernetes Manifest  
 
-    Created a new repository on GitHub named web-app-CI-CD-project.  
+    Wrote deployment YAML file to define and manage how app should be deployed and run on the AKS cluster. 
+
+    Authenticated into Azure and set up kubeCTL context:  
+    `az aks get-credentials --resource-group webapp1 --name myAKScluster`  
+
+    [screenshot15]  
+    Above: Output from command setting current kubeCTL context.  
+
+    Applied manifest with following command:  
+    `kubectl apply -f deployment2.yaml`  
+
+    [screenshot16]  
+    Above: Output from apploying deployment yaml file. 
+
+    [screenshot17]  
+    Above: Output showing all cluster services. 
+
+    [screenshot18]  
+    Above: Output showing all AKS pods.
+
+    Verified web application functionality:  
+    [screenshot19]  
+    Above: Verified web application functionality on front end using public IP address.  
+
+8.  Deploying CI/CD Pipeline in Azure DevOps  
+
+    Now that we have the application set up manually, we will now set up a pipeline to handle future automated deployments. 
+
+    After setting up Azure DevOps Account, I create a new project.
+    [screenshot20]  
+    Above: Created Azure DevOps project. The only files placed into the repo of this project was the deployment YAML. 
+
+    I then created a new pipeline and wrote a yaml file for the pipeline.
+    [screenshot21]  
+    [screenshot22]
+    Above: Configuration of pipeline and YAML. The YAML file dictates that instead of deploying web app code from the repo, to instead pull images from our container registry. Please refer to 'pipeline.yaml' file under the 'ci-cd' folder to view the full file.
+
+    [screenshot28]  
+    Above: Project folder showing deployment YAML file; the pipeline pulled container images of the web application separately.  
+
+    Set up Service Connection:
+    [screenshot23]  
+    Above: Set up of Azure service connection to connect pipeline to AKS resources in webapp1 (resource group where web app is).  
+
+    Verified that the correct permissions were given to pipeline as 'Contributor':  
+    [screenshot24]  
+    Above: Service principal under 'webapp1' with Contributor role.  
+
+    Ran pipeline:  
+    [screenshot25]  
+    Above: Summary of details from first run of the pipeline; status shows as successful.  
+
+    Ran command to check pods are running successfully:  
+    `kubectl get pods`
+    [screenshot26]  
+    Above: kubectl get pods ran showing pods running. The pipeline for deploying container images to Azure Kubernetes Service (AKS) has been successfully set up. While the image tags weren't updated during this deployment, the pipeline would typically push the latest container images to AKS automatically.  
+
+    [screenshot27]  
+    Above: Pipeline deployment logs showing container images being pulled.  
+
+9.  Created a new repository on GitHub named web-app-CI-CD-project.  
 
     Cloned the repository locally using:  
 
     `git clone https://github.com/pattytechuk/web-app-CI-CD-project.git`  
 
 
-12. Initializing the Project  
+10. Initialized the Project  
 
     Created folders: bicep/, ci-cd/, documents/, images/ and k8s-manifests/.  
 
@@ -173,7 +235,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     `git remote add origin https://github.com/pattytechuk/web-app-CI-CD-project.git`  
 
 
-13. Pushing to GitHub  
+22. Pushing to GitHub  
 
     Staged all files and committed changes:  
 
