@@ -53,21 +53,21 @@ git clone https://github.com/docker/awesome-compose/tree/master/react-express-mo
 
 2. Ran Web App Locally
 
-Opened the integrated terminal in Visual Studio Code
+- Opened the integrated terminal in Visual Studio Code
 
-Navigated to the project directory using:
+- Navigated to the project directory using:
 cd awesome-compose/react-express-mongoDB 
 
-Authenticated into my Docker account:
+- Authenticated into my Docker account:
 docker login
 
-Ran the Docker command to start the multi-container app:
+- Ran the Docker command to start the multi-container app:
 docker-compose up -d
 
-After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
+- After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:
 [screenshot1]
 
-Read through Dockerfile included in the app.
+- Read through Dockerfile included in the app.
 
 10. Creating the GitHub Repository
 
