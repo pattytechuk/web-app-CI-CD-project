@@ -66,7 +66,8 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     `docker-compose up -d`  
 
     After starting the app with Docker, opened browser to check at http://localhost:3000 to view the app:  
-    [screenshot1]  
+    ![screenshot1](https://github.com/user-attachments/assets/90e5e9f6-5927-4682-8f2d-bb295c8dc515)
+
     Above: Verifying local web application setup; running on localhost: 3000. 
 
     Read through Dockerfile included in the app.  
@@ -82,12 +83,13 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Created Azure Container Registry (ACR):     
     `az acr create --resource-group webapp1 --name webappcr1 --sku Basic`  
 
-    [screenshot2]  
+    ![screenshot2 resource group](https://github.com/user-attachments/assets/872e07b7-1573-4675-a6d3-3f08cceb22cb)
     Above: Resource group created to contain web app and AKS cluster.  
-    [screenshot3]  
-    Above: Azure Container Registry 'webappcr1' in the Azure portal.
+      
+    ![screenshot3 webappcr1](https://github.com/user-attachments/assets/85b9f3d3-c1d7-4904-8347-d1046776eb56)
+    Above: Azure Container Registry 'webappcr1' in the Azure portal.  
 
-4.  Tagging and creating container images to push to ACR
+5.  Tagging and creating container images to push to ACR
 
     Logged into ACR:  
     `az acr login --name webappcr1`  
@@ -101,12 +103,14 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
     Verified pushed images:  
     `az acr repository list --name webappcr1 --output table`  
-    [screenshot4] 
+    
+    ![screenshot4](https://github.com/user-attachments/assets/a116bc4c-eead-46a8-b586-f77ca7b5fa07)  
     Above: Output showing all tagged images.  
-    [screenshot5]  
-    Above: Container registry images in the Azure portal.
+    
+    ![screenshot5](https://github.com/user-attachments/assets/80ebccdd-7e1e-4bd6-86cd-8dcac1441172)  
+    Above: Container registry images in the Azure portal.  
 
-5.  Deployed Bicep template with Infrastructure  
+7.  Deployed Bicep template with Infrastructure  
 
     Created main2.bicep to define Azure Kubernetes Services (including cluster), Azure Container Registry, and Virtual Network:  
     `az deployment group create --resource-group webapp1 --template-file main2.bicep`  
@@ -123,7 +127,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     [screenshot10]  
     Above: Newly created AKS cluster's node pools in the Azure portal.  
 
-6.  Configuring AKS Cluster to Pull Images from ACR  
+8.  Configuring AKS Cluster to Pull Images from ACR  
 
     Used the following command to grant AKS cluster permission to pull images from ACR (webappcr1):  
     `az aks update -n myAKSCluster -g webapp1 --attach-acr webappcr1`  
