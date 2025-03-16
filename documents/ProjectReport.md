@@ -5,7 +5,7 @@ Overview
 This project demonstrates my ability to set up a complete CI/CD pipeline for a web application using various tools and technologies. The purpose is to develop skills in cloud infrastructure deployment, automation/scripting, and Kubernetes management.
 
 ## Project Structure
-
+```
 web-app-CI-CD-project/
 │
 ├── bicep/              # Bicep templates for infrastructure as code (IaC)
@@ -15,6 +15,7 @@ web-app-CI-CD-project/
 ├── images/             # Screenshots, images, diagrams
 - README.md                  # Overview of project
 - .gitignore                 # Ignore unnecessary files
+```
 
 ## Tools & Technologies Used
 
