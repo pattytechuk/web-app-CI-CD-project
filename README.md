@@ -26,7 +26,7 @@ Please check out the deployment-guide.md for high-level steps to deploy
 - deployment-guide.md       # Step-by-step guide
 - .gitignore                # Ignore unnecessary files
 
-  ```
+```
 web-app-CI-CD-project/
 │
 ├── bicep/              # Bicep templates for infrastructure as code (IaC)
