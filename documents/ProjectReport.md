@@ -82,19 +82,37 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     `az acr create --resource-group webapp1 --name webappcr1 --sku Basic`  
 
     [screenshot2]  
-    [screenshot3]
+    Above: Resource group created to contain web app and AKS cluster.  
+    [screenshot3]  
+    Above: Azure Container Registry 'webappcr1' in the Azure portal.
 
 4.  Tagging and creating container images to push to ACR
 
     Logged into ACR:  
     `az acr login --name webappcr1`  
 
-    Since the web app has a front end, back end, and mongo, I tagged all 3 images for ACR:  
+    The web application is structured into three components: the frontend, backend, and MongoDB database. To enable isolated and scalable deployment, I created three separate container images—one for each component:  
     `docker tag react-express-mongodb-frontend webappcr1.azurecr.io/mywebapp-frontend:latest`  
 
     `docker tag react-express-mongodb-backend webappcr1.azurecr.io/mywebapp-backend:latest`  
 
     `docker tag mongo webappcr1.azurecr.io/webapp-mongo:4.2.0`  
+
+    Verified pushed images:  
+    `az acr repository list --name webappcr1 --output table`  
+    [screenshot4] 
+    Above: Output showing all tagged images.  
+    [screenshot5]  
+    Above: Container registry images in the Azure portal.
+
+5.  Deployed Bicep template with Infrastructure  
+
+    Created main2.bicep to define Azure Kubernetes Services (including cluster), Azure Container Registry, and Virtual Network:  
+    `az deployment group create --resource-group webapp1 --template-file main2.bicep`  
+    (Please refer to folder 'bicep' to see the template deployed.)  
+    [screenshot6]  
+    [screenshot7]  
+    [screenshot8]
 
 10. Creating the GitHub Repository  
 
