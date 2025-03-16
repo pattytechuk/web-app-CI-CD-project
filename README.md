@@ -26,4 +26,11 @@ Please check out the deployment-guide.md for high-level steps to deploy
 - deployment-guide.md       # Step-by-step guide
 - .gitignore                # Ignore unnecessary files
 
+web-app-CI-CD-project/
+│
+├── bicep/              # Bicep templates for infrastructure as code (IaC)
+├── ci-cd/              # CI/CD pipeline configurations (YAML files, scripts, etc.)
+├── documents/          # Documentation files (this file is located here)
+├── k8s-manifests/       # Kubernetes manifests for deploying the application
+
 ✅ **Screenshots** 
