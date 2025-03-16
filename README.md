@@ -8,7 +8,7 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 - ☁️ Azure AKS, ACR, Bicep, Azure CLI
 - 🔁 Azure DevOps (CI/CD)
 
-## ✅ **Setup Instructions** 
+## ✅ **Setup** 
 Please check out the projectreport.md for full details on steps taken on this project, including commands run, resources provisioned, and tools used.
 
 Main commands include:  
@@ -27,12 +27,16 @@ az aks get-credentials --resource-group webapp1 --name myAKScluster`
 `kubectl get services`  
 `kubectl get pods`     
 
-High level overview of steps taken:
+High level overview of steps taken:  
 1. Cloned this repo from Awesome Compose, which provides collections of Docker compose examples: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb 
 2. Pushed Docker images to Azure Container Registry
 3. Deployed AKS with Bicep & Assign Role to AKS Cluster Managed Identity using Azure CLI
 4. Deployed web app with Kubernetes manifests
 5. Built and automated CI/CD pipeline with Azure DevOps
+
+## ✅ CI/CD Pipeline Overview  
+
+The CI/CD pipeline automates the process of building, pushing, and deploying the web app. Whenever code changes are made, a new Docker image is built and pushed to Azure Container Registry (ACR). The pipeline then deploys the updated image to Azure Kubernetes Service (AKS) by pulling the image from ACR and applying Kubernetes manifests. Although the pipeline includes basic testing, it mainly ensures that the app functions before deployment. This process is fully automated via Azure DevOps, enabling continuous integration and deployment of the app to AKS whenever changes are made to the code.  
 
 ## ✅ **Folder Structure** 
 ```
