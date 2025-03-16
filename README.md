@@ -11,14 +11,14 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 - 🔁 Azure DevOps (CI/CD)
 
 ## ✅ **Setup Instructions** 
-Please check out the projectreport.md for more details on steps. 
+Please check out the projectreport.md for full details on steps taken on this project.
 
 High level overview of steps taken:
 1. Cloned this repo: https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
 2. Pushed Docker images to Azure Container Registry
 3. Deployed AKS with Bicep & Assign Role to AKS Cluster Managed Identity using Azure CLI
 4. Deployed web app with Kubernetes manifests
-5. Automated CI/CD pipeline with Azure DevOps
+5. Built and automated CI/CD pipeline with Azure DevOps
 
 ## ✅ **Folder Structure** 
 ```
@@ -38,4 +38,19 @@ Please check out more screenshots under folder 'images' in this repo.
 ```
 ├── images/             # Screenshots, images, diagrams
 ```
+![screenshot19](https://github.com/user-attachments/assets/e7cfe123-d4ee-4372-8dd7-fa53c3862b61)  
+Above: Web application running on the front end.  
+
+![screenshot9 aks cluster](https://github.com/user-attachments/assets/5b4eb5ae-5aaa-467e-8221-c2a62afc7096)
+Above: AKS cluster running nodes/pods with the web application.  
+
+![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/f574d202-a4f6-4726-b69a-abc1774a3efd)  
+Above: AKS nodes running; systempool contains 1 VM and agentpool contains 2 VMs.  
+
+![screenshot26 pods running](https://github.com/user-attachments/assets/dbeecfa9-435b-46c3-9670-a58524c60829)
+Above: Command confirming pods are running as expected.
+
+
+
+
 
