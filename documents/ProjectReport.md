@@ -119,16 +119,16 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     ![screenshot 6 bicep file output](https://github.com/user-attachments/assets/d2d88814-8685-4951-9f09-f6f50206cda1)  
     Above: Output showing successful deployment of Bicep file.
     
-    ![screenshot7](https://github.com/user-attachments/assets/e8cd3ab5-7366-4c39-9cbc-1427e7ec1d82)  
-    Above: Resource group (webapp1) with newly deployed AKS cluster (myAKScluster), virtual network (Vnet1), and container registry (webappcr1).
+    ![screenshot7](https://github.com/user-attachments/assets/6f9be9fc-06c2-4184-a8e3-287b791bec4c)  
+    Above: Resource group (webapp1) with newly deployed AKS cluster (myAKScluster), virtual network (Vnet1), and container registry (webappcr1).  
     
      ![screenshot8 second rg](https://github.com/user-attachments/assets/f3c896b9-4c8c-4513-a5af-438dd09bde60)  
     Above: Automatically created resource group 'MC_webapp1_myAKSCluster_uksouth'.
     
-    ![screenshot9 aks cluster](https://github.com/user-attachments/assets/759d2094-8617-45dc-8d30-30043e4b4e99)  
+      ![screenshot9 aks cluster](https://github.com/user-attachments/assets/cf6a8ad1-ba09-46c6-a58b-e889f3eb5233)  
     Above: Newly created AKS cluster (myAKSCluster) in the Azure portal.
 
-    ![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/e9852885-da84-471f-a82f-c44137983335)  
+   ![screenshot10 aks cluster node pools](https://github.com/user-attachments/assets/c30b277e-64cf-44eb-9c7e-82d113bf1979)  
     Above: Newly created AKS cluster's node pools in the Azure portal.  
 
 9.  Configuring AKS Cluster to Pull Images from ACR  
@@ -141,12 +141,13 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
     Ran command to assign 'AcrPull' role to the AKS' managed identity:  
     `az role assignment create --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --role AcrPull --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
     
-     ![screenshot12 role assignment output](https://github.com/user-attachments/assets/47829d83-ff9c-4328-bbfb-fe3f9c80f86b)  
+      ![screenshot12 role assignment output](https://github.com/user-attachments/assets/0de9950b-60b4-4398-a8b2-65b3648f4585)  
     Above: Output from command re: role assignment.  
 
     Ran command to verify role assignment was successful:  
     `az role assignment list --assignee 3d4fef45-fd95-488b-854e-c93cf298476c --scope /subscriptions/10405fd6-9675-4e3d-9721-654ceefca8ae/resourceGroups/webapp1/providers/Microsoft.ContainerRegistry/registries/webappcr1`  
-    ![screenshot13 role assignment list output](https://github.com/user-attachments/assets/cabc776b-8a9a-48a6-a5d1-1a702f66c918)  
+
+     ![screenshot13 role assignment list output](https://github.com/user-attachments/assets/4f4a2cd9-fe67-4c33-b82f-5053b77212c0)  
     Above: Output confirming role assignment. 
 
     Managed identity under the IAM blade of the container registry:  
