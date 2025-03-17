@@ -9,7 +9,7 @@ This project deploys a containerized web app from Awesome Compose to an Azure Ku
 - 🔁 Azure DevOps (CI/CD)
 
 ## ✅ **Setup** 
-Please check out the projectreport.md for full details on steps taken on this project, including commands run, resources provisioned, and tools used.
+Please check out the [project report](https://github.com/pattytechuk/web-app-CI-CD-project/blob/main/documents/ProjectReport.md) under the folder 'documents' for full details on all steps taken on this project, including commands run, resources provisioned, and tools used.
 
 Main commands include:  
 `docker-compose up -d`  
