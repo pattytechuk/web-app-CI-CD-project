@@ -30,7 +30,7 @@ Kubernetes: Deployment and management of containerized applications.
 
 ## Planning and Preparation
 
-**Goal Setting and Requirements:** My goal was to containerize a web application and automate its deployment using Azure Kubernetes Services (AKS). For the first part of the project, I manually set up the infrastructure using Bicep, set up an AKS cluster, deploy the web app into the cluster, and then verify the web application's functionality. 
+**Goal Setting and Requirements:** My goal was to containerize a web application and automate its deployment using Azure Kubernetes Services (AKS). For the first part of the project, I manually set up the infrastructure using Bicep, set up an AKS cluster, deployed the web app into the cluster, and then verified the web application's functionality. 
 
 For the second part of the project, I set up a pipeline in Azure DevOps' pipelines in order to automate the deployment of the infrastructure, AKS cluster, and the deployment of the web application. 
 
@@ -41,7 +41,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 - Set up Azure DevOps account and created a project; also created pipeline.
 - Set up Azure CLI for Azure interaction.
 
-**Application Details:** I chose a sample web app using Express/Node Js available for use on on Awesome Compose's Github repo: https://github.com/docker/awesome-compose/tree/master
+**Application Details:** I chose a sample web app using MERN/Node.js available for use on on Awesome Compose's Github [repo](https://github.com/docker/awesome-compose/tree/master/react-express-mongodb).
 
 
 ## Steps Taken
@@ -54,7 +54,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 
 2. Ran Web App Locally
 
-    Opened the integrated terminal in Visual Studio Code  
+    Opened the integrated terminal in Visual Studio Code.
 
     Navigated to the project directory using:  
     `cd awesome-compose/react-express-mongoDB`  
@@ -221,9 +221,7 @@ For the second part of the project, I set up a pipeline in Azure DevOps' pipelin
 11.  Created a new repository on GitHub named web-app-CI-CD-project.  
 
     Cloned the repository locally using:  
-
     `git clone https://github.com/pattytechuk/web-app-CI-CD-project.git`  
-
 
 11. Initialized the Project  
 
